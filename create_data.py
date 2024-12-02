@@ -94,20 +94,9 @@ def test_generator(n_tests=n_tests, seed=seed, n_ppl=n_ppl):
     tests.to_csv("data/tests.csv", index=False)
 
 
-# @timeit
-# def id_chara_generator():
-#     ids = duckdb.sql("Select distinct id from read_parquet('data/tests.parquet')").df()
-#     ids["income"] = np.random.lognormal(5, 1, size=ids.shape[0])
-#     ids["age"] = np.random.randint(18, 90, size=ids.shape[0])
-#     ids.to_parquet("data/id_chara.parquet")
-#     ids.to_csv("data/id_chara.csv", index=False)
-
-
 if __name__ == "__main__":
 
     # Generate transaction dataframe
     transaction_generator()
     # Generate tests dataframe
-    # test_generator()
-    # Generate id_characteristics dataframe
-    # id_chara_generator()
+    test_generator()
