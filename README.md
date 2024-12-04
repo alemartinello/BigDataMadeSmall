@@ -1,10 +1,11 @@
+
+![alt text](imgs/image.png)
+
 # Big Data Made Small: Workshop for Ukraine
 
 This repository contains the material for the [Workshop for Ukraine](https://sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.3dg44e5elwsy) organized by [Dariia Mykhailyshyna](https://sites.google.com/view/dariia-mykhailyshyna/main), and scheduled for December 12th 2024.
 
-You can find a copy of the slides in `slides/BigDataMadeSmall.pdf`.
-
-![alt text](imgs/image.png)
+You can find a copy of the slides in [`slides/BigDataMadeSmall.pdf`](slides/BigDataMadeSmall.pdf).
 
 ## Setup
 
