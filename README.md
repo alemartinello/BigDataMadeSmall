@@ -19,7 +19,7 @@ git clone git@github.com:alemartinello/BigDataMadeSmall.git
 cd BigDataMadeSmall
 ```
 
-3) Create the main dataset we'll be using during this workshop (simulated). It will take a few minutes to run.
+3) Create the main dataset we'll be using during this workshop (simulated). It will take a few minutes (~10, lots of which would be writing the CSVs to disk) to run.
 ```bash
 uv run create_data.py   
 ```

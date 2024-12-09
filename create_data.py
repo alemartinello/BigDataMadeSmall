@@ -70,6 +70,7 @@ def timeit(func):
 def transaction_generator(
     n_transactions=n_transactions, seed=seed, n_ppl_t=n_ppl_t, n_shops=n_shops
 ):
+    print("Generating transaction data...")
     transactions = pd.DataFrame(
         random_timestamps("2022-01-01", "2022-12-31", n_transactions, seed=seed),
         columns=["transaction_time"],
@@ -77,12 +78,15 @@ def transaction_generator(
     np.random.seed(seed)
     transactions["id"] = np.random.randint(1, n_ppl_t, size=transactions.shape[0])
     transactions["shop"] = np.random.randint(1, n_shops, size=transactions.shape[0])
+    print("Saving parquet to disk...")
     transactions.to_parquet("data/transactions.parquet")
+    print("Saving csv to disk...")
     transactions.to_csv("data/transactions.csv", index=False)
 
 
 @timeit
 def test_generator(n_tests=n_tests, seed=seed, n_ppl=n_ppl):
+    print("Generating test data...")
     tests = pd.DataFrame(
         random_timestamps("2022-01-01", "2022-12-31", n_tests, seed=seed),
         columns=["test_time"],
@@ -90,7 +94,9 @@ def test_generator(n_tests=n_tests, seed=seed, n_ppl=n_ppl):
     np.random.seed(seed)
     tests["id"] = np.random.randint(1, n_ppl, size=tests.shape[0])
     tests["positive"] = 1 * (np.random.uniform(size=tests.shape[0]) < 0.08)
+    print("Saving parquet to disk...")
     tests.to_parquet("data/tests.parquet")
+    print("Saving csv to disk...")
     tests.to_csv("data/tests.csv", index=False)
 
 
@@ -100,3 +106,4 @@ if __name__ == "__main__":
     transaction_generator()
     # Generate tests dataframe
     test_generator()
+    print("Done!")
