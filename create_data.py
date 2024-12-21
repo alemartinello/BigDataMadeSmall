@@ -78,8 +78,9 @@ def transaction_generator(
     np.random.seed(seed)
     transactions["id"] = np.random.randint(1, n_ppl_t, size=transactions.shape[0])
     transactions["shop"] = np.random.randint(1, n_shops, size=transactions.shape[0])
+    transactions = transactions.sort_values(["id", "shop", "transaction_time"])
     print("Saving parquet to disk...")
-    transactions.to_parquet("data/transactions.parquet")
+    transactions.to_parquet("data/transactions.parquet", index=False)
     print("Saving csv to disk...")
     transactions.to_csv("data/transactions.csv", index=False)
 
@@ -94,8 +95,9 @@ def test_generator(n_tests=n_tests, seed=seed, n_ppl=n_ppl):
     np.random.seed(seed)
     tests["id"] = np.random.randint(1, n_ppl, size=tests.shape[0])
     tests["positive"] = 1 * (np.random.uniform(size=tests.shape[0]) < 0.08)
+    tests = tests.sort_values(["id", "test_time"])
     print("Saving parquet to disk...")
-    tests.to_parquet("data/tests.parquet")
+    tests.to_parquet("data/tests.parquet", index=False)
     print("Saving csv to disk...")
     tests.to_csv("data/tests.csv", index=False)
 
